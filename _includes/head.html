@@ -22,11 +22,44 @@
         });
 
         myApp.controller('MyController', function($scope, $firebase) {
-            $scope.title = 'Title';
+            var peopleRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people');
 
-            var peopleRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people');//https://o899h29al8w.firebaseio-demo.com/
-            // Automatically syncs everywhere in realtime
-            $scope.people = $firebase(peopleRef);
+            $scope.getPeople = function() {
+                // Automatically syncs everywhere in realtime
+                $scope.people = $firebase(peopleRef);
+            };
+
+            $scope.create = function() {
+                peopleRef.push({
+                    name: $scope.newUser
+                });
+                $scope.getPeople();
+            };
+
+            $scope.remove = function(id) {
+                var personRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people/' + id);
+                personRef.remove();
+                $scope.getPeople();
+            };
+
+            $scope.edit = function(id) {
+                $scope.showInput = true;
+                var personRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people/' + id);
+                var person = $firebase(personRef);
+                $scope.editUser = person.name;
+                $scope.editId = id;
+            };
+
+            $scope.update = function(id) {
+                var personRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people/' + $scope.editId);
+                personRef.update({
+                    name: $scope.editUser
+                });
+                $scope.showInput = false;
+                $scope.getPeople();
+            };
+
+            $scope.getPeople();
         });
     </script>
 

@@ -1,5 +1,5 @@
 # Site settings
-title: Test Firebase in github
+title: Jekyll / Firebase in github (using AngularJS)
 email: notbenj@gmail.com
 description: "Testing BaaS with Github and Jekyll"
 baseurl: "/firebase"
