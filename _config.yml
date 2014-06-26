@@ -2,7 +2,7 @@
 title: Test Firebase in github
 email: notbenj@gmail.com
 description: "Testing BaaS with Github and Jekyll"
-baseurl: ""
+baseurl: "/firebase"
 url: "http://yourdomain.com"
 
 # Build settings
