@@ -1,7 +1,7 @@
 # Site settings
-title: Jekyll / Firebase in github (using AngularJS)
+title: Proof of concept - Using Firebase in Github page
 email: notbenj@gmail.com
-description: "Testing BaaS with Github and Jekyll"
+description: "Proof of concept - Using Firebase in Github page"
 baseurl: "/firebase"
 url: "http://yourdomain.com"
 
