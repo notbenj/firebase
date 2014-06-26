@@ -9,4 +9,25 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+
+    <script>
+        var myApp = angular.module('MyApp', ['firebase']).config(function($interpolateProvider){
+            $interpolateProvider.startSymbol('{(').endSymbol(')}');
+        });
+
+        myApp.controller('MyController', function($scope, $firebase) {
+            $scope.title = 'Title';
+
+            var peopleRef = new Firebase('https://sizzling-fire-7259.firebaseio.com/people');//https://o899h29al8w.firebaseio-demo.com/
+            // Automatically syncs everywhere in realtime
+            $scope.people = $firebase(peopleRef);
+        });
+    </script>
+
 </head>
